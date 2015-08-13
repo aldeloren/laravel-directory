@@ -11,6 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Display General search form, and provide search tips
+Route::get('/', 'pagesController@home');
+
+// Display all search results for given query
+Route::get('/search', 'SearchController@searchList');
+
+// Display detailed information about an individual returned from the search
+Route::get('/search', 'SearchController@searchList');
