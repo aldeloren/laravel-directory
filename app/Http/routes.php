@@ -15,7 +15,10 @@
 Route::get('/', 'pagesController@home');
 
 // Display all search results for given query
-Route::get('/search', 'SearchController@searchList');
+Route::get('/search/{term}', 'SearchController@searchList');
+
+// Redirect users to homepage if no search term is present
+Route::get('search/', function() { return redirect('/');}); 
 
 // Display detailed information about an individual returned from the search
 Route::get('/detail/{id}', 'DetailController@index');
