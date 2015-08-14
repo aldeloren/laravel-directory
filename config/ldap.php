@@ -63,7 +63,7 @@ return array(
     |--------------------------------------------------------------------------
     */
 
-    'cachettl'   => 20,
+    'cachettl'   => 60,
 
     /*
     |--------------------------------------------------------------------------
@@ -98,12 +98,15 @@ return array(
 
     'attributes' => array(
         'uid',
-        'displayName',
-        'sn',
-        'givenName',
+        'givenname',
         'mail',
-        'edupersonAffiliation',
-        'supannAffectation',
-        'login',
+        'telephonenumber',
+        'o',
+        'sn',
+        'title',
+        'edupersonprimaryaffiliation',
+        'ufleduofficelocation',
+        'postaladdress',
+        'ufledupsdeptid',
     )
 );
