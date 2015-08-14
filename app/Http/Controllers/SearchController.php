@@ -16,14 +16,4 @@ class SearchController extends Controller
       $data['results']  = '1';
       return view('search.searchList', $data);
     }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

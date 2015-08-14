@@ -18,4 +18,5 @@ Route::get('/', 'pagesController@home');
 Route::get('/search', 'SearchController@searchList');
 
 // Display detailed information about an individual returned from the search
-Route::get('/search', 'SearchController@searchList');
+Route::get('/detail/{id}', 'DetailController@index');
+
