@@ -94,14 +94,37 @@ return array(
 
     'userdn'     => 'dn',
 
+    /*
+    |--------------------------------------------------------------------------
+    | Limit on returned entries.
+    | LDAP server defines max responses (typically 500-1000), but client can
+    | define lower settings.
+    | Suppressing server limit warning.
+    |--------------------------------------------------------------------------
+    */
+  
+    'limit'      => 100,
+
+   /*
+    |--------------------------------------------------------------------------
+    | Exclude attributes from search 
+    | This is useful for is your organization sunsets individuals active 
+    | active status by changing the affiliation.
+    | TODO: Allow for an array of exclusions, presently only single allowed. 
+    |--------------------------------------------------------------------------
+    */
+  
+    'exclude'     => '|(eduPersonPrimaryAffiliation=affiliate)(edupersonprimaryaffiliation=member)',
+
     'searchscope' => 'SUBTREE_SCOPE',
 
     'attributes' => array(
         'uid',
-        'givenname',
         'mail',
         'telephonenumber',
         'o',
+        'cn',
+        'givenname',
         'sn',
         'title',
         'edupersonprimaryaffiliation',

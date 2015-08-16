@@ -26,6 +26,7 @@ class SearchController extends Controller
         $data = Ldap::find('people')->where('mail', $n_term)->get();
         if( count($data) > 0 ){
           $uid = $data['uid'];
+
           // TODO use proper function to return route w/ params
           $route = '/detail/'. $uid;
           return redirect($route);
@@ -36,10 +37,27 @@ class SearchController extends Controller
         if ( strpos($n_term, " ") ){
           $names = explode(" ", $n_term);
           if( count($names === 2) ){
-            $data = Ldap::find('people')->where('sn', $names[1])->get();
-            $results['data'] = $data;
-            $results['results'] = true;
-            return view('search.searchList', $results);
+
+            // Format name to follow known 'cn' structure
+            // Allen Rout maintains UFL specific documentation on the UFL LDAP schema
+            // http://nersp.nerdc.ufl.edu/~asr/ldap-for-services/uf-ldap-2003.html
+            // https://open-systems.ufl.edu/content/uf-ldap-schema
+            $common_name = $names[1] . ',' . $names[0] . '*';  
+            $data = Ldap::find('people')->where('cn', $common_name)->get();
+
+            $total_results = $this->count_results($data);
+
+            if($total_results === 0){
+              $results = false;
+              return view('search.searchList', compact('data', 'results'));
+            }elseif($total_results === 1){
+              $route = '/detail/' . $data['uid'];
+              return redirect($route);
+            }else{
+              $results = true;
+              usort($data, array($this, 'alpha_sort'));
+              return view('search.searchList', compact('data', 'results'));
+            }
           }
         }else{
           // Determine if term is a gatorlink 
@@ -55,5 +73,37 @@ class SearchController extends Controller
       
       //return view('search.searchList', $data);
     }
+
+  /*
+   * Determine total count of results 
+   * If none, return 0
+   * If only one return 1 
+   * If multiple, return 2
+   *
+   * @return int 
+   */
+
+  public function count_results($returned_data){
+    // Determine if there is only one result
+    // TODO Better solution for determining nexted array (multiple results)
+    if (count($returned_data) === 0){
+      return 0;
+    } elseif ( isset($returned_data['uid']) ){
+      return 1;
+    } else {
+      return 2;
+    }
+  }
+
+  /*
+   * Sort results by last name 
+   * More specifically, uses the 'cn' attribute, which assumes that name(s) are entered correctly
+   * This may not be true, and may need to be validated further
+   *
+   * @return sorted nested array
+   */
+  public function alpha_sort($a1, $a2){ 
+    return strcmp(str_replace(' ', '',strtolower($a1["cn"])), str_replace(' ', '', strtolower($a2["cn"])));
+  }
 
 }
