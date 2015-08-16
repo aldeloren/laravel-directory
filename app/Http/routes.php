@@ -21,5 +21,8 @@ Route::get('/search/{term}', 'SearchController@searchList');
 Route::get('search/', function() { return redirect('/');}); 
 
 // Display detailed information about an individual returned from the search
-Route::get('/detail/{id}', 'DetailController@index');
-
+Route::get('/detail/{id}',
+  [
+    'as'   => 'detail',
+    'uses' => 'DetailController@index'
+  ]);
