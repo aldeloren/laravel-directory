@@ -1,8 +1,11 @@
+// Include styles from new theme
+@import 'custom';
+
 $uf-blue: #00529b; 
 $uf-orange: #dd661e;
 
 body{
-  padding-top: 72px;
+  padding-top: 6em;
 }
 
 .navbar-fixed-top{
@@ -17,3 +20,16 @@ body{
     max-width: 20%;
   }
 }
+
+#home-search{
+  padding-top: 4em;
+}
+
+#search-tips{
+  background-color: #fbfbfb;
+  border: 1px solid #ccc;
+  border-radius: 1em;
+  padding: 1em;
+}
+
+

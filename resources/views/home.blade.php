@@ -2,16 +2,19 @@
 
 @section('content')
 
-<div class="col col-sm-6">
+<div class="col col-sm-12 jumbotron">
+  <h2 class="text-center">Search the University of Florida Directory</h2>
+</div>
+
+<div id ="home-search" class="col col-sm-6">
 
 {!! Form::open(array('route' => 'directory_search', 'class' => 'form')) !!}
 
   <div class="form-group">
-      {!! Form::label('Search the UF Directory') !!}
       {!! Form::text('search', null, 
           array('required', 
                 'class'=>'form-control', 
-                'placeholder'=>'Please enter a name (First, Last, or both), email address, or GatorLink')) !!}
+                'placeholder'=>'Search UF Directory')) !!}
   </div>
   
   <div class="form-group">
@@ -23,12 +26,16 @@
 
 </div>
 <div class="col col-sm-6">
-
-
-
-
-
-These are the tips
+    <h3 class="text-center">Search Tips</h3>
+  <div id="search-tips"> 
+    <p>Searches within the UF directory can be done in the following methods:</p>
+    <ul>
+      <li>Enter both a first name and last name: 'Antonio Calculon'</li>
+      <li>Enter just a last name: 'Calclulon'</li>
+      <li>Enter an email address: 'bender@ilovebender.com'</li>
+      <li>Enter a GatorLink username: 'Calclulator'</li>
+    </ul>
+  </div>
 </div>
 
 @stop
