@@ -1,4 +1,13 @@
 body {
-  padding-top: 65px; }
+  padding-top: 72px; }
+
+.navbar-fixed-top {
+  background: #00529b; }
+
+#logo-home a:hover {
+  background-color: transparent; }
+
+#logo-home img {
+  max-width: 20%; }
 
 /*# sourceMappingURL=app.css.map */

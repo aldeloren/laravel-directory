@@ -14,9 +14,19 @@
 // Display General search form, and provide search tips
 Route::get('/', 'pagesController@home');
 
-// Display all search results for given query
-Route::get('/search/{term}', 'SearchController@searchList');
+Route::post('/', 
+  [
+    'as'   => 'directory_search',
+    'uses' => 'pagesController@search'
+  ]);
 
+// Display all search results for given query
+Route::get('/search/{term}', 
+  [
+    'as'   => 'search',
+    'uses' => 'SearchController@searchList'
+  ]);
+  
 // Redirect users to homepage if no search term is present
 Route::get('search/', function() { return redirect('/');}); 
 

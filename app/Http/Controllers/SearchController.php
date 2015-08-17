@@ -34,10 +34,12 @@ class SearchController extends Controller
         if ( strpos($n_term, " ") ){
           $names = explode(" ", $n_term);
           if( count($names === 2) ){
-            // Format name to follow known 'cn' structure
-            // Allen Rout maintains UFL specific documentation on the UFL LDAP schema
-            // http://nersp.nerdc.ufl.edu/~asr/ldap-for-services/uf-ldap-2003.html
-            // https://open-systems.ufl.edu/content/uf-ldap-schema
+            /* 
+             * Format name to follow known 'cn' structure
+             * Allen Rout maintains UFL specific documentation on the UFL LDAP schema
+             * http://nersp.nerdc.ufl.edu/~asr/ldap-for-services/uf-ldap-2003.html
+             * https://open-systems.ufl.edu/content/uf-ldap-schema
+             */
             $common_name = $names[1] . ',' . $names[0] . '*';  
             $data = Ldap::find('people')->where('cn', $common_name)->get();
             $total_results = $this->count_results($data);

@@ -5,6 +5,7 @@
 <? //stylesheets ?>
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/journal-bootstrap.min.css">
+<link rel='stylesheet' href='//assets.webadmin.ufl.edu/fonts/fonts.css'> 
 <link rel="stylesheet" href="/css/app.css">
 <title>University of Florida LDAP directory</title>
 </head>
@@ -12,16 +13,10 @@
   <div class="navbar navbar-default navbar-fixed-top">
     <div class="container">
 
-    <div class="navbar-collapse collapse" id="navbar-main">
+    <div class="" id="navbar-main">
           <ul class="nav navbar-nav">
-            <li>
-              <a href="http://www.ufl.edu/" title="University of Florida home"><img src=#"></a>
-            </li>
-          </ul>
-
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <a href="/">Home</a>
+            <li id="logo-home">
+              <a href="/" title="UF Directory"><img src="{{ asset('images/uf-directory-logo.png') }}"></a>
             </li>
           </ul>
 

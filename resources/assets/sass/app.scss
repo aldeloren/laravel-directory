@@ -1,5 +1,19 @@
-//@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+$uf-blue: #00529b; 
+$uf-orange: #dd661e;
 
 body{
-  padding-top: 65px;
+  padding-top: 72px;
+}
+
+.navbar-fixed-top{
+  background: $uf-blue; 
+}
+
+#logo-home{
+  a:hover{
+    background-color: transparent;
+  }
+  img{
+    max-width: 20%;
+  }
 }

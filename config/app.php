@@ -138,6 +138,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         'Xavrsl\Ldap\LdapServiceProvider',
+        'Illuminate\Html\HtmlServiceProvider',
         /*
          * Application Service Providers...
          */
@@ -194,6 +195,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
         'Ldap' => 'Xavrsl\Ldap\Facades\Ldap',
+        'Form'=> 'Illuminate\Html\FormFacade',
+        'HTML'=> 'Illuminate\Html\HtmlFacade',
 
     ],
 
