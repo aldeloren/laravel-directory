@@ -42,6 +42,25 @@
     </div><!-- ./panel-body -->
   </div><!-- ./panel -->
 </div><!-- ./col-sm-8 -->
+<script>
+  $(document).ready(function(){
+    var individual = '{{ $uid }}',
+        indvName = '{{ $cn }}',
+        localSearches = localStorage.recent_searches,
+        recentResults = JSON.parse(localSearches),
+        recentResultsJSON = recentResults.results, 
+        resultNames = { 
+          'name': indvName,
+          'uid': individual
+        },
+        present = $.grep(recentResultsJSON, function(e){ return e.uid == individual; });
+
+    if(present.length < 1){
+      recentResultsJSON.unshift(resultNames);
+      localStorage.recent_searches = JSON.stringify(recentResults);
+    }
+  });
+</script>
 @include('search.info')
 @stop
 

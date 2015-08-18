@@ -1,4 +1,4 @@
-{!! Form::open(array('route' => 'directory_search', 'class' => 'form')) !!}
+{!! Form::open(array('route' => 'directory_search', 'id' => 'search-form', 'class' => 'form')) !!}
 
   <div class="form-group">
       {!! Form::text('search', null, 

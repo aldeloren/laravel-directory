@@ -21,5 +21,5 @@
     </ul>
   </div>
 </div>
-
+@include('scripts.search')
 @stop

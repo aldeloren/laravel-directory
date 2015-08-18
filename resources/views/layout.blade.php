@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link rel='stylesheet' href='//assets.webadmin.ufl.edu/fonts/fonts.css'> 
 <link rel="stylesheet" href="/css/app.css">
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <title>University of Florida LDAP directory</title>
 </head>
 <body>
@@ -75,7 +76,6 @@
 
 
 <? // javascript ?>
-  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   @yield('scripts')
 </body>
