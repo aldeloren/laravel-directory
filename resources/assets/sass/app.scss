@@ -21,6 +21,8 @@ body{
   }
 }
 
+// Homepage styling
+
 #home-search{
   padding-top: 4em;
 }
@@ -32,4 +34,35 @@ body{
   padding: 1em;
 }
 
+// Search page styling
+
+.search-info{
+  padding: 1em;
+}
+
+.search-entry{
+  border-bottom: 1px dotted #ccc;
+  margin: 1em 0;
+}
+
+.search-info{
+
+  .btn{
+    margin: auto;
+    float: right;
+  }
+}
+
+#search-history{
+  clear: both;
+  padding: 1em 0;
+}
+
+// Details styling
+
+#details{
+  .panel-heading{
+    overflow: auto;
+  }
+}
 

@@ -36,3 +36,6 @@ Route::get('/detail/{id}',
     'as'   => 'detail',
     'uses' => 'DetailController@index'
   ]);
+
+// Redirect users to homepage if no ID is present
+Route::get('detail/', function() { return redirect('/');}); 

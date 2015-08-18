@@ -2,29 +2,46 @@
 
 @section('content')
 
-This is the detailed individual view.
-
-<dl>
-  <dt>Gatorlink</dt>
-  <dd>{{ $uid }}</dd>
-  @if( isset($givenname) && isset($sn) )
-    <dt>Name</dt>
-    <dd>{{ $givenname }} {{ $sn }}</dd>
-  @endif 
-  @if( isset($title) )
-    <dt>Title</dt>
-    <dd>{{ $title }}</dd>
-  @endif
-  @if( isset($mail) ) 
-    <dt>Email</dt>
-    <dd>{{ $mail }}</dd>
-  @endif
-  @if( isset($edupersonprimaryaffiliation) )
-    <dt>Affiliation</dt>
-    <dl>{{ $edupersonprimaryaffiliation }}</dl>
-  @endif
-</dl>
-  
-
+<div class="col col-sm-9">
+  <div id="details" class="panel panel-primary">
+    <div class="panel-heading">
+      <div class="panel-title">
+        @if ( isset($cn) )
+          <div class="col col-sm-8">
+            <h3 class="name text-left">
+            {{ $cn }} 
+            </h3>
+          </div>
+        @endif
+        @if ( isset($edupersonprimaryaffiliation) ) 
+          <div class="col col-sm-4">
+            <h4 class="affiliation text-right">
+            {{ $edupersonprimaryaffiliation }}
+            </h4>
+          </div>
+        @endif
+      </div><!-- ./panel-title -->
+    </div><!-- ./panel-heading -->
+    <div class="panel-body">
+      <ul class="list-group">
+      @if ( $title != '--UNKNOWN--' )
+        <li class="list-group-item"><strong>Title:</strong> {{ $title }}</li>
+      @endif
+      @if ( $mail != '--UNKNOWN--' )
+        <li class="list-group-item"><strong>Email:</strong> <a href="mailto:{{ $mail }}">{{ $mail }}</a></li> 
+      @endif
+      @if ( $telephonenumber != '--UNKNOWN--' )
+        <li class="list-group-item"><strong>Telephone:</strong> <a href="tel:{{ $telephonenumber }}">{{ $telephonenumber }}</a></li> 
+      @endif
+      @if ( $ufleduofficelocation )
+        <li class="list-group-item"><strong>Office Address:</strong> <br />{!! $ufleduofficelocation !!}</li>
+      @endif 
+      @if ( $postaladdress != '--UNKNOWN--' )
+        <li class="list-group-item"><strong>Mailing Address:</strong> <br />{!! $postaladdress !!}</li>
+      @endif
+    </div><!-- ./panel-body -->
+  </div><!-- ./panel -->
+</div><!-- ./col-sm-8 -->
+@include('search.info')
 @stop
 

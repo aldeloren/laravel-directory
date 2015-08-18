@@ -4,7 +4,6 @@
 
 <? //stylesheets ?>
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<link rel="stylesheet" href="/css/journal-bootstrap.min.css">
 <link rel='stylesheet' href='//assets.webadmin.ufl.edu/fonts/fonts.css'> 
 <link rel="stylesheet" href="/css/app.css">
 <title>University of Florida LDAP directory</title>

@@ -30,7 +30,16 @@ class DetailController extends Controller
     // GatorLink can only contain letters, numbers, '.', and '-'
     if( preg_match("/^[\w.-]*$/", $id) ){
       $data = Ldap::find('people')->where('uid', $id)->get();
-      if ( count($data) > 0 ) {
+      if( count($data) > 0 ) {
+        if( isset($data['telephonenumber']) ){
+          $data['telephonenumber'] = str_replace('+1', '',  str_replace(' ', '', $data['telephonenumber'])); 
+        }
+        if( isset($data['ufleduofficelocation']) ){
+          $data['ufleduofficelocation'] = substr_replace(str_replace('$', '<br />', $data['ufleduofficelocation']), '-', -4, 0);
+        } 
+        if( isset($data['postaladdress']) ){
+          $data['postaladdress'] = substr_replace(str_replace('$', '<br />', $data['postaladdress']), '-', -4, 0);
+        } 
         return view('detail.person', $data);
       } else {
         return redirect('/');

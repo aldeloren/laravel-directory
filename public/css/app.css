@@ -521,4 +521,22 @@ body {
   border-radius: 1em;
   padding: 1em; }
 
+.search-info {
+  padding: 1em; }
+
+.search-entry {
+  border-bottom: 1px dotted #ccc;
+  margin: 1em 0; }
+
+.search-info .btn {
+  margin: auto;
+  float: right; }
+
+#search-history {
+  clear: both;
+  padding: 1em 0; }
+
+#details .panel-heading {
+  overflow: auto; }
+
 /*# sourceMappingURL=app.css.map */
