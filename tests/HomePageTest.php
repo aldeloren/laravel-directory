@@ -1,6 +1,5 @@
 <?php
 
-
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -12,6 +11,7 @@ class HomeTest extends TestCase
      *
      * @return void
      */
+
     public function testCheckHomePageContent() 
     {
         $this->visit('/')
@@ -21,6 +21,14 @@ class HomeTest extends TestCase
     }
     public function testHomePageSearchFormMulitpleResults()
     {
+        $test_names_multiple_entry = array(
+          "swanson",
+          "redd",
+          "test dickinson",
+          "vasquez"
+        );
+
+        $random_test = [rand(0, count($test_names_multiple_entry))];
         $this->visit('/')
           ->type('standifer', 'search')
           ->press('Search')
@@ -28,9 +36,19 @@ class HomeTest extends TestCase
     }
     public function testHomePageSearchFormSingleResult()
     {
+
+        $test_names_single_entry = array(
+          ["name" =>"delorenzo", "uid" => "aldelorenzo"],
+          ["name" =>"jesse schmidt", "uid" => "jesseschmidt"],
+          ["name" =>"fedro", "uid" => "fsz"],
+          ["name" =>"basharat", "uid" => "basharat"],
+        );
+  
+        $random_test = $test_names_single_entry[rand(0, count($test_names_single_entry))];
+  
         $this->visit('/')
-          ->type('aldelorenzo', 'search')
+          ->type($random_test['name'], 'search')
           ->press('Search')
-          ->seePageIs('/detail/aldelorenzo');
+          ->seePageIs('/detail/' . $random_test['uid'] );
     }
 }
